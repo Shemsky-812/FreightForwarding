@@ -54,7 +54,7 @@ function confirmForm() {
       },
       focusInvalid : true,   //验证提示时，鼠标光标指向提示的input
       rules : {
-    	  loginName : {  
+          loginNameInp : {
 	            required : true,   //验证非空
 	//            remote: {          //远程ajax验证
 	//                url: "../xxxx/checkaccount", //检查是否存在账号，存在则返回true
@@ -74,13 +74,20 @@ function confirmForm() {
 	//                    }
 	//                }
 	//            }
-        },  
-      },  
-      messages : {  
-    	  loginName : {  
-	            required : "用户名不能为空!",
-//	            remote: "用户名已存在！"  //这个地方如果不写的话，是自带的提示内容，加上就是这个内容。
+        },
+        loginNameApp : {
+              required : true,   //验证非空
         }
+      },  
+      messages : {
+          loginNameInp : {
+	            required : "登录名不能为空!",
+//	            remote: "用户名已存在！"  //这个地方如果不写的话，是自带的提示内容，加上就是这个内容。
+          },
+          loginNameApp : {
+              required : "登录名不能为空!",
+//	            remote: "用户名已存在！"  //这个地方如果不写的话，是自带的提示内容，加上就是这个内容。
+          }
       },  
       errorElement : "small",
       errorClass : "font-red",
