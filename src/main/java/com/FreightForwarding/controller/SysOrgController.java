@@ -308,4 +308,18 @@ public class SysOrgController {
 		}
 		return resultMap;
 	}
+
+	/**
+	 * 检查机构代码是否存在
+	 *
+	 */
+	@RequestMapping(value = "/checkOrgCode", method = RequestMethod.GET)
+	public @ResponseBody Object checkOrgCode(HttpServletRequest request,HttpSession session){
+		SysOrg org = sysOrgService.getSysOrgByOrgCode(request.getParameter("orgCode"));
+		if (org!=null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

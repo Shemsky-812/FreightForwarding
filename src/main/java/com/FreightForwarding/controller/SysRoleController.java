@@ -265,4 +265,18 @@ public class SysRoleController {
 		menus = sysMenuService.getMenuAll(Integer.parseInt(request.getParameter("roleId")));
 		return menus;
 	}
+
+	/**
+	 * 检查角色名是否存在
+	 *
+	 */
+	@RequestMapping(value = "/checkRoleName", method = RequestMethod.GET)
+	public @ResponseBody Object checkRoleName(HttpServletRequest request,HttpSession session){
+		SysRole role = sysRoleService.getSysRoleByRoleName(request.getParameter("roleName"));
+		if (role!=null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

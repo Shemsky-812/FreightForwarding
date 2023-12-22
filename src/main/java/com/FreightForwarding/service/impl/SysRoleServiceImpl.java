@@ -44,4 +44,12 @@ public class SysRoleServiceImpl implements SysRoleService {
 		result.put("rows", sysRoleDao.getList(pageNumber,pageSize,roleName,true));
 		return result;
 	}
+
+	@Override
+	public SysRole getSysRoleByRoleName(String roleName) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		String hql = "from SysRole as u where u.roleName=:roleName";
+		params.put("roleName", roleName);
+		return sysRoleDao.get(hql, params);
+	}
 }

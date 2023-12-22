@@ -17,4 +17,6 @@ public interface SysUserService {
     
     public Map<String, Object> getList(Integer pageNumber,Integer pageSize,String userName);
 
+    public SysUser getSysUserByLoginName(String loginName);
+
 }

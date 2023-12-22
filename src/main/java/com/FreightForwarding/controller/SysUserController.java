@@ -259,4 +259,20 @@ public class SysUserController {
 		}
 		return resultMap;
 	}
+
+	/**
+	 * 检查用户名是否存在
+	 *
+	 */
+	@RequestMapping(value = "/checkLoginName", method = RequestMethod.GET)
+	public @ResponseBody Object checkLoginName(HttpServletRequest request,HttpSession session){
+
+		SysUser user = sysUserService.getSysUserByLoginName(request.getParameter("loginName"));
+
+		if (user!=null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

@@ -55,39 +55,82 @@ function confirmForm() {
       focusInvalid : true,   //验证提示时，鼠标光标指向提示的input
       rules : {
           loginNameInp : {
-	            required : true,   //验证非空
-	//            remote: {          //远程ajax验证
-	//                url: "../xxxx/checkaccount", //检查是否存在账号，存在则返回true
-	//                type: "GET",
-	//                dataType: "json",
-	//                data: {
-	//                    account: function () {
-	//                        return $("#account").val(); //这个是取要验证的用户名
-	//                    }
-	//                },
-	//                dataFilter: function (data) {  //判断控制器返回的内容
-	//                    var notice = eval("("+ data +")");
-	//                    if( notice ){
-	//                        return false;
-	//                    }else{
-	//                        return true;
-	//                    }
-	//                }
-	//            }
+	          required : true,   //验证非空
+              remote: {          //远程ajax验证
+                  url: ctx+"/sysUserController/checkLoginName", //检查是否存在账号，存在则返回true
+                  type: "GET",
+                  dataType: "json",
+                  data: {
+                      loginName: function () {
+                          return $("#loginNameInp").val(); //这个是取要验证的用户名
+                      }
+                  },
+                  dataFilter: function (data) {  //判断控制器返回的内容
+                      var notice = eval("("+ data +")");
+                      if( notice ){
+                          return false;
+                      }else{
+                          return true;
+                      }
+                  }
+              }
         },
         loginNameApp : {
               required : true,   //验证非空
-        }
+            remote: {          //远程ajax验证
+                url: ctx+"/sysUserController/checkLoginName", //检查是否存在账号，存在则返回true
+                type: "GET",
+                dataType: "json",
+                data: {
+                    loginName: function () {
+                        return $("#loginNameApp").val(); //这个是取要验证的用户名
+                    }
+                },
+                dataFilter: function (data) {  //判断控制器返回的内容
+                    var notice = eval("("+ data +")");
+                    if( notice ){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                }
+            }
+        },
+          paperNo : {
+              required : true,   //验证非空
+              remote: {          //远程ajax验证
+                  url: ctx+"/companyController/checkPaperNo", //检查是否存在账号，存在则返回true
+                  type: "GET",
+                  dataType: "json",
+                  data: {
+                      paperNo: function () {
+                          return $("#paperNo").val(); //这个是取要验证的用户名
+                      }
+                  },
+                  dataFilter: function (data) {  //判断控制器返回的内容
+                      var notice = eval("("+ data +")");
+                      if( notice ){
+                          return false;
+                      }else{
+                          return true;
+                      }
+                  }
+              }
+          }
       },  
       messages : {
           loginNameInp : {
 	            required : "登录名不能为空!",
-//	            remote: "用户名已存在！"  //这个地方如果不写的话，是自带的提示内容，加上就是这个内容。
+	            remote: "登录名已存在！"  //这个地方如果不写的话，是自带的提示内容，加上就是这个内容。
           },
           loginNameApp : {
               required : "登录名不能为空!",
-//	            remote: "用户名已存在！"  //这个地方如果不写的话，是自带的提示内容，加上就是这个内容。
-          }
+	            remote: "登录名已存在！"  //这个地方如果不写的话，是自带的提示内容，加上就是这个内容。
+          },
+          paperNo : {
+              required : "营业执照编号不能为空!",
+	            remote: "营业执照编号已存在！"  //这个地方如果不写的话，是自带的提示内容，加上就是这个内容。
+          },
       },  
       errorElement : "small",
       errorClass : "font-red",

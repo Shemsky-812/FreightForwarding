@@ -53,7 +53,7 @@
 	                            <label class="control-label col-md-1"> 类型</label>
 	                            <div class="col-md-3">
 	                                <select class="form-control" id="rateType" name="rateType">
-	                                	<option >请选择...</option>
+	                                	<%--<option >请选择...</option>--%>
 	                                	<option value="1">转账手续费</option>
 	                                	<option value="2">提现手续费</option>
 	                                </select>

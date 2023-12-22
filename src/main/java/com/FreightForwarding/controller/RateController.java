@@ -224,4 +224,20 @@ public class RateController {
 		}
 		return resultMap;
 	}
+
+	/**
+	 * 检查手续费是否存在
+	 *
+	 */
+	@RequestMapping(value = "/checkChargeRate", method = RequestMethod.GET)
+	public @ResponseBody Object checkChargeRate(HttpServletRequest request,HttpSession session){
+		String rateType = request.getParameter("rateType");
+		Integer roleId = Integer.parseInt(request.getParameter("roleId"));
+		ChargeRate chargeRate = chargeRateService.getTxRate(rateType,roleId);
+		if (chargeRate!=null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

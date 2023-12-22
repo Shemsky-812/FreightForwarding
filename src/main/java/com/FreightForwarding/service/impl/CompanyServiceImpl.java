@@ -38,4 +38,12 @@ public class CompanyServiceImpl implements CompanyService {
 		result.put("rows", companyDao.getList(pageNumber,pageSize,mapData,true));
 		return result;
 	}
+
+	@Override
+	public Company getCompanyByPaperNo(String paperNo) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		String hql = "from Company as u where u.paperNo=:paperNo";
+		params.put("paperNo", paperNo);
+		return companyDao.get(hql, params);
+	}
 }

@@ -48,30 +48,30 @@ function confirmForm() {
       rules : {
     	  loginName : {  
 	            required : true,   //验证非空
-	//            remote: {          //远程ajax验证
-	//                url: "../xxxx/checkaccount", //检查是否存在账号，存在则返回true
-	//                type: "GET",
-	//                dataType: "json",
-	//                data: {
-	//                    account: function () {
-	//                        return $("#account").val(); //这个是取要验证的用户名
-	//                    }
-	//                },
-	//                dataFilter: function (data) {  //判断控制器返回的内容
-	//                    var notice = eval("("+ data +")");
-	//                    if( notice ){
-	//                        return false;
-	//                    }else{
-	//                        return true;
-	//                    }
-	//                }
-	//            }
+	           remote: {          //远程ajax验证
+	               url: ctx+"/sysUserController/checkLoginName", //检查是否存在账号，存在则返回true
+	               type: "GET",
+	               dataType: "json",
+	               data: {
+                       loginName: function () {
+	                       return $("#loginName").val(); //这个是取要验证的用户名
+	                   }
+	               },
+	               dataFilter: function (data) {  //判断控制器返回的内容
+	                   var notice = eval("("+ data +")");
+	                   if( notice ){
+	                       return false;
+	                   }else{
+	                       return true;
+	                   }
+	               }
+	           }
         },  
       },  
       messages : {  
     	  loginName : {  
 	            required : "用户名不能为空!",
-//	            remote: "用户名已存在！"  //这个地方如果不写的话，是自带的提示内容，加上就是这个内容。
+	            remote: "用户名已存在！"  //这个地方如果不写的话，是自带的提示内容，加上就是这个内容。
         }
       },  
       errorElement : "small",

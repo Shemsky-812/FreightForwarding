@@ -520,4 +520,18 @@ Company company = companyService.getCompany(Integer.parseInt(request.getParamete
 		
 		return resultMap;
 	}
+
+	/**
+	 * 检查营业执照是否存在
+	 *
+	 */
+	@RequestMapping(value = "/checkPaperNo", method = RequestMethod.GET)
+	public @ResponseBody Object checkPaperNo(HttpServletRequest request,HttpSession session){
+		Company company = companyService.getCompanyByPaperNo(request.getParameter("paperNo"));
+		if (company!=null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

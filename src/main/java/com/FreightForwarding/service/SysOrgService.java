@@ -19,4 +19,6 @@ public interface SysOrgService {
     
     public Map<String, Object> getOrgUserInList(Integer pageNumber,Integer pageSize);
 
+    public SysOrg getSysOrgByOrgCode(String orgCode);
+
 }

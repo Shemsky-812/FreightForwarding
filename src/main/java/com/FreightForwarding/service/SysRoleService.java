@@ -18,4 +18,6 @@ public interface SysRoleService {
     
     public Map<String, Object> getList(Integer pageNumber,Integer pageSize,String roleName);
 
+    public SysRole getSysRoleByRoleName(String roleName);
+
 }

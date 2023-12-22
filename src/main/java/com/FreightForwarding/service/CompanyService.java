@@ -15,4 +15,6 @@ public interface CompanyService {
     
     public Map<String, Object> getList(Integer pageNumber,Integer pageSize,Map<String, Object> mapData);
 
+    public Company getCompanyByPaperNo(String paperNo);
+
 }

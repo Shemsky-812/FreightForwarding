@@ -54,4 +54,12 @@ public class SysOrgServiceImpl implements SysOrgService {
 		result.put("rows", sysOrgDao.getOrgUserInList(pageNumber,pageSize,true));
 		return result;
 	}
+
+	@Override
+	public SysOrg getSysOrgByOrgCode(String orgCode) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		String hql = "from SysOrg as u where u.orgCode=:orgCode";
+		params.put("orgCode", orgCode);
+		return sysOrgDao.get(hql, params);
+	}
 }

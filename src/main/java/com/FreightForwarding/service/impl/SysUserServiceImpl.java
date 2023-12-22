@@ -47,4 +47,12 @@ public class SysUserServiceImpl implements SysUserService {
 		result.put("rows", sysUserDao.getList(pageNumber,pageSize,userName,true));
 		return result;
 	}
+
+	@Override
+	public SysUser getSysUserByLoginName(String loginName) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		String hql = "from SysUser as u where u.loginName=:loginName";
+		params.put("loginName", loginName);
+		return sysUserDao.get(hql, params);
+	}
 }
