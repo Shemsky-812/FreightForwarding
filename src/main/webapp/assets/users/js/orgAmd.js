@@ -46,32 +46,33 @@ function confirmForm() {
       },
       focusInvalid : true,   //验证提示时，鼠标光标指向提示的input
       rules : {
-    	  loginName : {  
+          orgCode : {
 	            required : true,   //验证非空
-	//            remote: {          //远程ajax验证
-	//                url: "../xxxx/checkaccount", //检查是否存在账号，存在则返回true
-	//                type: "GET",
-	//                dataType: "json",
-	//                data: {
-	//                    account: function () {
-	//                        return $("#account").val(); //这个是取要验证的用户名
-	//                    }
-	//                },
-	//                dataFilter: function (data) {  //判断控制器返回的内容
-	//                    var notice = eval("("+ data +")");
-	//                    if( notice ){
-	//                        return false;
-	//                    }else{
-	//                        return true;
-	//                    }
-	//                }
-	//            }
+              remote: {          //远程ajax验证
+                  url: ctx+"/sysOrgController/checkOrgCode", //检查是否存在账号，存在则返回true
+                  type: "GET",
+                  dataType: "json",
+                  data: {
+                      orgCode: function () {
+                          return $("#orgCode").val(); //这个是取要验证的用户名
+                      }
+                  },
+                  dataFilter: function (data) {  //判断控制器返回的内容
+                      var orgCodeTmp = $("#orgCode").val();
+                      var notice = eval("("+ data +")");
+                      if( notice && (orgCodeTmp != orgCode )){
+                          return false;
+                      }else{
+                          return true;
+                      }
+                  }
+              }
         },  
       },  
-      messages : {  
-    	  loginName : {  
-	            required : "用户名不能为空!",
-//	            remote: "用户名已存在！"  //这个地方如果不写的话，是自带的提示内容，加上就是这个内容。
+      messages : {
+          orgCode : {
+	            required : "机构代码不能为空!",
+	            remote: "机构代码已存在！"  //这个地方如果不写的话，是自带的提示内容，加上就是这个内容。
         }
       },  
       errorElement : "small",

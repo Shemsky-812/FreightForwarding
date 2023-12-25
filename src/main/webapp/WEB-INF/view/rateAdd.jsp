@@ -71,7 +71,6 @@
 	                            <label class="control-label col-md-1"> 角色</label>
 	                            <div class="col-md-3">
 	                                <select class="form-control" id="roleId" name="roleId">
-	                                	<option >请选择...</option>
 	                                </select>
 	                            </div>
 	                        </div>

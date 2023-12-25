@@ -18,6 +18,9 @@
 	<script type="text/javascript">
 		var ctx = "${ctx}";
 		var saveBtn = "${saveBtn}";
+		var paperNo = "${paperNo}";
+		var loginNameInp = "${loginNameInp}";
+		var loginNameApp = "${loginNameApp}";
 	</script>
 	
 	<%@ include file="common/importCss.jsp"%>

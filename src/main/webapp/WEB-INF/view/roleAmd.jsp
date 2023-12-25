@@ -19,6 +19,7 @@
 		var ctx = "${ctx}";
 		var roleId = "${roleId}";
 		var toCustId = "${toCustId}";
+		var roleName = "${roleName}";
 	</script>
 	
 	<%@ include file="common/importCss.jsp"%>

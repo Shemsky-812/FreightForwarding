@@ -18,6 +18,7 @@
 	<script type="text/javascript">
 		var ctx = "${ctx}";
 		var roleId = "${roleId}";
+		var loginName = "${loginName}";
 	</script>
 	
 	<%@ include file="common/importCss.jsp"%>

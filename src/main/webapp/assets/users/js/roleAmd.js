@@ -74,30 +74,31 @@ function confirmForm() {
       rules : {
     	  roleName : {  
 	            required : true,   //验证非空
-	//            remote: {          //远程ajax验证
-	//                url: "../xxxx/checkaccount", //检查是否存在账号，存在则返回true
-	//                type: "GET",
-	//                dataType: "json",
-	//                data: {
-	//                    account: function () {
-	//                        return $("#account").val(); //这个是取要验证的用户名
-	//                    }
-	//                },
-	//                dataFilter: function (data) {  //判断控制器返回的内容
-	//                    var notice = eval("("+ data +")");
-	//                    if( notice ){
-	//                        return false;
-	//                    }else{
-	//                        return true;
-	//                    }
-	//                }
-	//            }
+	           remote: {          //远程ajax验证
+	               url: ctx+"/sysRoleController/checkRoleName", //检查是否存在账号，存在则返回true
+	               type: "GET",
+	               dataType: "json",
+	               data: {
+                       roleName: function () {
+	                       return $("#roleName").val(); //这个是取要验证的用户名
+	                   }
+	               },
+	               dataFilter: function (data) {  //判断控制器返回的内容
+	                   var roleNameTmp = $("#roleName").val();
+	                   var notice = eval("("+ data +")");
+	                   if( notice && (roleNameTmp != roleName)){
+	                       return false;
+	                   }else{
+	                       return true;
+	                   }
+	               }
+	           }
         },  
       },  
       messages : {  
     	  roleName : {  
 	            required : "角色名称不能为空!",
-//	            remote: "用户名已存在！"  //这个地方如果不写的话，是自带的提示内容，加上就是这个内容。
+	            remote: "角色名称已存在！"  //这个地方如果不写的话，是自带的提示内容，加上就是这个内容。
         }
       },  
       errorElement : "small",
