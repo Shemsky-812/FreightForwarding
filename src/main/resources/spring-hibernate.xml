@@ -14,7 +14,7 @@
 							http://www.springframework.org/schema/tx
 							http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<context:property-placeholder location="classpath:/dataSource.properties" />
+	<context:property-placeholder location="classpath:/application.yml" />
 	<context:component-scan
 		base-package="com.FreightForwarding.dao,com.FreightForwarding.service" />
 
@@ -22,8 +22,8 @@
 	<!-- 配置数据源 -->
 	<bean id="dataSource"
 		  class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-		  p:driverClassName="${jdbc.driverClassName}" p:url="${jdbc.url}"
-		  p:username="${jdbc.username}" p:password="${jdbc.password}" />
+		  p:driverClassName="${spring.datasource.driver-class-name}" p:url="${spring.datasource.url}"
+		  p:username="${spring.datasource.username}" p:password="${spring.datasource.password}" />
 
 	<!-- 配置hibernate相关信息 -->
 	<bean id="sessionFactory"
@@ -36,7 +36,7 @@
 		</property>
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				<prop key="hibernate.dialect">${spring.jpa.properties.hibernate.dialect}</prop>
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->

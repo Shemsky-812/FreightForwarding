@@ -1,0 +1,42 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://rm-uf631y9808mqk11y0.mysql.rds.aliyuncs.com:3306/FreightForwarding?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true
+    username: freightforwarding
+    password: AJcloud134*&#
+#    url: jdbc:mysql://192.168.25.122:3306/freightforwarding?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true
+#    username: root
+#    password: 123456
+    maxActive: 1000
+    initialSize: 5
+    maxIdle: 20
+    maxWait: 120000
+    whenExhaustedAction: 1
+    testOnBorrow: true
+    testOnReturn: false
+  thymeleaf:
+    prefix: /WEB-INF/view/
+    suffix: .jsp
+  resources:
+    static-locations: classpath:/static/**
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        show_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+  c3p0:
+    acquireIncrement: 3
+    initialPoolSize: 3
+    idleConnectionTestPeriod: 60
+    minPoolSize: 2
+    maxPoolSize: 50
+    maxStatements: 100
+    numHelperThreads: 10
+    maxIdleTime: 60
+    testConnectionOnCheckout: false
+    preferredTestQuery: select 1 from dual
