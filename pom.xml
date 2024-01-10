@@ -265,6 +265,17 @@
         <finalName>FreightForwarding</finalName>
         <plugins>
             <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.5.5.RELEASE</version>
+                <configuration>
+                    <includeSystemScope>true</includeSystemScope>
+                    <mainClass>com.FreightForwarding.Application</mainClass>
+                    <fork>true</fork>
+                    <addResources>true</addResources>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
@@ -274,21 +285,18 @@
                     <encoding>utf8</encoding>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>1.5.5.RELEASE</version>
-                <configuration>
-                    <fork>true</fork>
-                    <addResources>true</addResources>
-                </configuration>
-            </plugin>
         </plugins>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
                     <include>**/*</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>${basedir}/src/main/webapp</directory>
+                <includes>
+                    <include>**/**</include>
                 </includes>
             </resource>
         </resources>
